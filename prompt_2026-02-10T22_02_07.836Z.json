@@ -1,0 +1,91 @@
+
+import React from 'react';
+import { motion } from 'motion/react';
+
+const partners = [
+  "Zillow.com", 
+  "Realtor.com", 
+  "Trulia.com", 
+  "Homes.com", 
+  "Juwai (China)", 
+  "Mansion Global", 
+  "WSJ", 
+  "Apartamentos.com", 
+  "WorldProperties.com", 
+  "Zumper", 
+  "RealtyTrac", 
+  "Homes&Land", 
+  "SFPropertySearch.com",
+  "InternationalMLS", 
+  "GlobalPropertyXchange", 
+  "Realopedia", 
+  "ProxioConnect",
+  "Apartments.com", 
+  "ForRent.com", 
+  "Rent.com", 
+  "ApartmentFinder.com",
+  "Vende TuCasa", 
+  "CREXI", 
+  "Brevitas", 
+  "RPR"
+];
+
+const TrustTicker: React.FC = () => {
+  return (
+    <div id="trust-ticker" className="py-20 bg-bone border-y border-charcoal/5 overflow-hidden relative scroll-mt-24">
+      <div className="max-w-7xl mx-auto px-4 mb-16 text-center">
+        <motion.span 
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="inline-block px-6 py-2 mb-6 text-[10px] font-bold uppercase tracking-ultra text-gold bg-gold/5 border border-gold/20 rounded-sm"
+        >
+          GLOBAL SYNDICATION NETWORK
+        </motion.span>
+        <motion.h3 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-2xl md:text-4xl font-serif font-bold text-deep-charcoal tracking-tight"
+        >
+          Institutional Visibility. Global Reach.
+        </motion.h3>
+      </div>
+      
+      <div className="relative bg-gradient-to-r from-charcoal/90 via-charcoal to-charcoal/90 py-10">
+        {/* Gradient Masks */}
+        <div className="absolute left-0 top-0 bottom-0 w-64 bg-gradient-to-r from-bone to-transparent z-10 opacity-20"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-64 bg-gradient-to-l from-bone to-transparent z-10 opacity-20"></div>
+        
+        {/* Marquee Track */}
+        <div className="flex animate-marquee whitespace-nowrap items-center">
+          {[...partners, ...partners].map((partner, i) => {
+            const isPowerPlayer = ["Zillow.com", "Realtor.com", "Trulia.com", "Juwai (China)"].includes(partner);
+            return (
+              <div key={i} className="flex items-center mx-20">
+                <span className={`text-xl font-serif font-bold tracking-tight transition-all duration-500 cursor-default ${
+                  isPowerPlayer 
+                    ? 'text-gold scale-110 opacity-100' 
+                    : 'text-bone opacity-60 hover:opacity-100 hover:text-bone'
+                }`}>
+                  {partner}
+                </span>
+                <div className="w-1 h-1 rounded-full bg-gold/30 ml-20"></div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      
+      <div className="mt-12 text-center">
+        <p className="text-[10px] font-bold text-deep-charcoal/30 uppercase tracking-ultra px-4">
+          Instantly syndicating to over 200+ global portals in 19 languages.
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default TrustTicker;
